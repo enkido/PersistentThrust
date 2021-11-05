@@ -33,15 +33,15 @@ namespace PersistentThrust
         #region Fields
 
         // Persistent
-        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_PersistentThrust"), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
+        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_PersistentThrust", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
         public bool HasPersistentThrust = true;
-        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_PersistentHeading"), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
+        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_PersistentHeading", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
         public bool HasPersistentHeadingEnabled = true;
-        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_MaximizePersistentIsp"), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
+        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_MaximizePersistentIsp", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
         public bool MaximizePersistentIsp = true;
-        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_MaximizePersistentPower"), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
+        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiActiveUnfocused = true, guiName = "#LOC_PT_MaximizePersistentPower", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false), UI_Toggle(disabledText = "#autoLOC_900890", enabledText = "#autoLOC_900889", affectSymCounterparts = UI_Scene.All)]
         public bool MaximizePersistentPower;
-        [KSPField(isPersistant = true, guiActiveEditor = false, guiActive = true, guiName = "#LOC_PT_ManeuverTolerance", guiUnits = " %"), UI_FloatRange(stepIncrement = 1, maxValue = 180, minValue = 0, requireFullControl = false, affectSymCounterparts = UI_Scene.All)]//Beamed Power Throttle
+        [KSPField(isPersistant = true, guiActiveEditor = false, guiActive = true, guiName = "#LOC_PT_ManeuverTolerance", guiUnits = "°", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false), UI_FloatRange(stepIncrement = 1, maxValue = 180, minValue = 0, requireFullControl = false, affectSymCounterparts = UI_Scene.All)]//Beamed Power Throttle
         public float maneuverToleranceInDegree = 90;
 
         // Persistent values to use during TimeWarp and offline processing
@@ -74,17 +74,17 @@ namespace PersistentThrust
 
 
         // GUI
-        [KSPField(guiFormat = "F1", guiActive = true, guiName = "#autoLOC_6001378", guiUnits = "#autoLOC_7001400")]
+        [KSPField(guiFormat = "F1", guiActive = true, guiName = "#autoLOC_6001378", guiUnits = "#autoLOC_7001400", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false)]
         public float realIsp;
-        [KSPField(guiFormat = "F6", guiActive = true, guiName = "#autoLOC_6001377")]
+        [KSPField(guiFormat = "F6", guiActive = true, guiName = "#autoLOC_6001377", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false)]
         public string thrustTxt;
-        [KSPField(guiFormat = "F2", guiActive = true, guiName = "#autoLOC_6001376", guiUnits = "%")]
+        [KSPField(guiFormat = "F2", guiActive = true, guiName = "#autoLOC_6001376", guiUnits = "%", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false)]
         public float propellantReqMet;
-        [KSPField(guiFormat = "F3", guiUnits = " U/s")]
+        [KSPField(guiFormat = "F3", guiUnits = " U/s", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false)]
         public double masslessUsage;
-        [KSPField(guiFormat = "F3", guiActive = true, guiName = "#LOC_PT_HeadingVersusManeuver", guiUnits = " deg")]
+        [KSPField(guiFormat = "F3", guiActive = true, guiName = "#LOC_PT_HeadingVersusManeuver", guiUnits = "°", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false)]
         public double vesselHeadingVersusManeuverInDegree;
-        [KSPField(isPersistant = true, guiFormat = "F6", guiActive = true, guiName = "cosine")]
+        [KSPField(isPersistant = true, guiFormat = "F6", guiActive = true, guiName = "cosine", groupName = "ptinfo", groupDisplayName = "#LOC_PT_PersistentThrust", groupStartCollapsed = false)]
         public double cosine;
 
         // Config Settings
