@@ -19,10 +19,12 @@ namespace PersistentThrust.BackgroundProcessing
             int moduleIndex;
             ProtoPartModuleSnapshot persistentEngineModuleSnapshot = null;
             for (moduleIndex = 0; moduleIndex < protoPartSnapshot.modules.Count; moduleIndex++)
-            {
-                persistentEngineModuleSnapshot = protoPartSnapshot.modules[moduleIndex];
-                if (persistentEngineModuleSnapshot.moduleName == nameof(PersistentEngine))
+            {                
+                if (protoPartSnapshot.modules[moduleIndex].moduleName == nameof(PersistentEngine))
+                {
+                    persistentEngineModuleSnapshot = protoPartSnapshot.modules[moduleIndex];
                     break;
+                }
             }
 
             if (persistentEngineModuleSnapshot == null)
