@@ -140,6 +140,16 @@ namespace PersistentThrust
             return Vector3d.Dot(vessel.transform.up.normalized, requestedDirection);
         }
 
+        public static Vector3d GetFacing(Vessel vessel)
+        {
+            var vesselRotation = vessel.ReferenceTransform.rotation;
+            Quaternion vesselFacing = Quaternion.Inverse(Quaternion.Euler(90, 0, 0) * Quaternion.Inverse(vesselRotation) * Quaternion.identity);
+
+            var euler = vesselFacing.eulerAngles;
+            var vector = vesselFacing * Vector3d.forward;
+            return vector;
+        }
+
         public static double GetVesselOrbitHeadingVersusManeuverVector(this Vessel vessel)
         {
             if (vessel == null || vessel.patchedConicSolver == null || vessel.orbit == null || vessel.patchedConicSolver.maneuverNodes == null)
@@ -152,7 +162,11 @@ namespace PersistentThrust
                 if (maneuverNode == null)
                     return -1;
 
-                return vessel.orbit.GetVesselOrbitHeadingVersusManeuverVector(maneuverNode.nextPatch, maneuverNode.patch, maneuverNode.UT);
+                var facing = GetFacing(vessel);
+                var burnVector = vessel.orbit.GetBurnVector(maneuverNode.nextPatch, maneuverNode.patch, maneuverNode.UT).normalized;
+
+                //return vessel.orbit.GetVesselOrbitHeadingVersusManeuverVector(maneuverNode.nextPatch, maneuverNode.patch, maneuverNode.UT);
+                return Vector3d.Dot(facing, burnVector);
             }
             else
                 return 1;
